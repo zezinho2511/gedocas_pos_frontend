@@ -4,7 +4,7 @@
   --------------------------------------------------------------------------------------
 */
 const getList = async () => {
-    fetch(window.location.href + '/api/minimundos', {
+    fetch('http://127.0.0.1:5000/minimundos', {
         method: 'get',
     }).then((response) => response.json()).then((data) => {
         data.minimundos.forEach(item => insertList(item.name, item.type))
@@ -31,7 +31,7 @@ const postItem = async (inputName, inputType, inputDescription) => {
     formData.append('name', inputName);
     formData.append('type', inputType);
     formData.append('description', inputDescription);
-    fetch(window.location.href + '/api/minimundo', {
+    fetch('http://127.0.0.1:5000/minimundo', {
         method: 'post',
         body: formData
     }).then((response) => response.json()).catch((error) => {
@@ -79,7 +79,7 @@ const removeElement = () => {
   --------------------------------------------------------------------------------------
 */
 const deleteItem = (item) => {
-    fetch(window.location.href + '/api/minimundo?nome=' + item, {
+    fetch('http://127.0.0.1:5000/minimundo?nome=' + item, {
         method: 'delete'
     }).then((response) => response.json()).catch((error) => {
         console.error('Error:', error);
